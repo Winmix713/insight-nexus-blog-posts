@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import FootballPitch from '@/components/FootballPitch';
-import { ArrowRight, BarChart3, Activity, Network } from 'lucide-react';
+import { ArrowRight, BarChart3, Activity, Network, TableIcon } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -63,7 +63,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-[#0A1128] mb-12">Interactive Football Analytics Tools</h2>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Passing Networks */}
             <Link to="/passing-networks" className="group">
               <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-xl hover:-translate-y-1">
@@ -117,6 +117,26 @@ const Index = () => {
                     Visualize player movements and positional data with server-side rendered tracking visualization.
                   </p>
                   <div className="flex items-center text-[#00A6FB] font-medium">
+                    Explore
+                    <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+            
+            {/* Match Data - NEW */}
+            <Link to="/match-data" className="group">
+              <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-xl hover:-translate-y-1">
+                <div className="h-48 bg-[#0A1128] flex items-center justify-center relative">
+                  <TableIcon size={80} className="text-[#4CAF50]" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#4CAF50]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-[#0A1128] mb-2">Match Data</h3>
+                  <p className="text-gray-600 mb-4">
+                    Analyze real match results, team performance metrics, and league standings from CSV data.
+                  </p>
+                  <div className="flex items-center text-[#4CAF50] font-medium">
                     Explore
                     <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
                   </div>
@@ -177,6 +197,7 @@ const Index = () => {
               <Link to="/passing-networks" className="hover:text-[#00A6FB] transition-colors">Passing Networks</Link>
               <Link to="/expected-threat" className="hover:text-[#00A6FB] transition-colors">Expected Threat</Link>
               <Link to="/tracking-data" className="hover:text-[#00A6FB] transition-colors">Tracking Data</Link>
+              <Link to="/match-data" className="hover:text-[#00A6FB] transition-colors">Match Data</Link>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">

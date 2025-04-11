@@ -1,110 +1,104 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, Transition } from '@headlessui/react';
-import { MenuIcon, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Activity, Menu, X, Network, BarChart3, ChevronDown, TableIcon, PieChart } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useMobile } from '@/hooks/use-mobile';
+import { Button } from '@/components/ui/button';
+
+const navLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'Passing Networks', path: '/passing-networks', icon: <Network size={16} className="mr-1" /> },
+  { name: 'Expected Threat', path: '/expected-threat', icon: <BarChart3 size={16} className="mr-1" /> },
+  { name: 'Tracking Data', path: '/tracking-data', icon: <Activity size={16} className="mr-1" /> },
+  { name: 'Advanced Analytics', path: '/advanced-analytics', icon: <PieChart size={16} className="mr-1" /> },
+  { name: 'Match Data', path: '/match-data', icon: <TableIcon size={16} className="mr-1" /> }
+];
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isMobile = useMobile();
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className="bg-[#0A1128] text-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold">FootballViz</span>
-            </Link>
-          </div>
+    <nav className="sticky top-0 z-50 bg-white shadow-md">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          <Link to="/" className="flex items-center space-x-2">
+            <div className="bg-[#0A1128] h-8 w-8 rounded-md flex items-center justify-center">
+              <Activity size={18} className="text-white" />
+            </div>
+            <span className="font-bold text-xl text-[#0A1128]">FootballViz</span>
+          </Link>
           
-          {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link 
-              to="/passing-networks" 
-              className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-[#0D1B3A] transition-colors"
-            >
-              Passing Networks
-            </Link>
-            <Link 
-              to="/expected-threat" 
-              className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-[#0D1B3A] transition-colors"
-            >
-              Expected Threat
-            </Link>
-            <Link 
-              to="/tracking-data" 
-              className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-[#0D1B3A] transition-colors"
-            >
-              Tracking Data
-            </Link>
-          </div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <Menu as="div" className="relative inline-block text-left">
-              {({ open }) => (
-                <>
-                  <Menu.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-[#0D1B3A] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                    <span className="sr-only">Open main menu</span>
-                    {open ? <X size={24} /> : <MenuIcon size={24} />}
-                  </Menu.Button>
-                  
-                  <Transition
-                    show={open}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items
-                      static
-                      className="absolute right-0 mt-2 w-56 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    >
-                      <div className="py-1">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              to="/passing-networks"
-                              className={`${
-                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
-                              } block px-4 py-2 text-sm`}
-                            >
-                              Passing Networks
-                            </Link>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              to="/expected-threat"
-                              className={`${
-                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
-                              } block px-4 py-2 text-sm`}
-                            >
-                              Expected Threat
-                            </Link>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              to="/tracking-data"
-                              className={`${
-                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
-                              } block px-4 py-2 text-sm`}
-                            >
-                              Tracking Data
-                            </Link>
-                          )}
-                        </Menu.Item>
-                      </div>
-                    </Menu.Items>
-                  </Transition>
-                </>
-              )}
-            </Menu>
-          </div>
+          {isMobile ? (
+            <Button variant="ghost" onClick={toggleMenu} aria-label="Toggle menu">
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </Button>
+          ) : (
+            <div className="flex space-x-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={cn(
+                    "px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center",
+                    location.pathname === link.path
+                      ? "bg-[#0A1128] text-white"
+                      : "text-gray-600 hover:bg-gray-100"
+                  )}
+                >
+                  {link.icon}
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
+
+        {/* Mobile menu */}
+        {isMobile && (
+          <div
+            className={cn(
+              "fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity",
+              isOpen
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none"
+            )}
+            onClick={toggleMenu}
+          >
+            <div
+              className={cn(
+                "fixed top-16 right-0 bottom-0 w-64 bg-white z-50 shadow-xl transition-transform transform",
+                isOpen ? "translate-x-0" : "translate-x-full"
+              )}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col py-4">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={cn(
+                      "px-4 py-3 flex items-center",
+                      location.pathname === link.path
+                        ? "bg-[#0A1128] text-white"
+                        : "text-gray-600 hover:bg-gray-100"
+                    )}
+                    onClick={toggleMenu}
+                  >
+                    {link.icon}
+                    <span className="ml-2">{link.name}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

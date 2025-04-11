@@ -1,36 +1,33 @@
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import PassingNetworks from "./pages/PassingNetworks";
-import ExpectedThreat from "./pages/ExpectedThreat";
-import TrackingData from "./pages/TrackingData";
-import AdvancedAnalytics from "./pages/AdvancedAnalytics";
-import NotFound from "./pages/NotFound";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Index from '@/pages/Index';
+import PassingNetworks from '@/pages/PassingNetworks';
+import ExpectedThreat from '@/pages/ExpectedThreat';
+import TrackingData from '@/pages/TrackingData';
+import AdvancedAnalytics from '@/pages/AdvancedAnalytics';
+import MatchData from '@/pages/MatchData';
+import NotFound from '@/pages/NotFound';
+import { Toaster } from '@/components/ui/toaster';
+import { MatchDataProvider } from '@/context/MatchDataContext';
+import './App.css';
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+function App() {
+  return (
+    <MatchDataProvider>
+      <Router>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/passing-networks" element={<PassingNetworks />} />
           <Route path="/expected-threat" element={<ExpectedThreat />} />
           <Route path="/tracking-data" element={<TrackingData />} />
           <Route path="/advanced-analytics" element={<AdvancedAnalytics />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/match-data" element={<MatchData />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+        <Toaster />
+      </Router>
+    </MatchDataProvider>
+  );
+}
 
 export default App;
