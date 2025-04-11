@@ -1,7 +1,17 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Activity, Menu, X, Network, BarChart3, ChevronDown, TableIcon, PieChart } from 'lucide-react';
+import { 
+  Activity, 
+  Menu, 
+  X, 
+  Network, 
+  BarChart3, 
+  TableIcon, 
+  PieChart,
+  Calendar,
+  Shield
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from '@/components/ui/button';
@@ -12,7 +22,9 @@ const navLinks = [
   { name: 'Expected Threat', path: '/expected-threat', icon: <BarChart3 size={16} className="mr-1" /> },
   { name: 'Tracking Data', path: '/tracking-data', icon: <Activity size={16} className="mr-1" /> },
   { name: 'Advanced Analytics', path: '/advanced-analytics', icon: <PieChart size={16} className="mr-1" /> },
-  { name: 'Match Data', path: '/match-data', icon: <TableIcon size={16} className="mr-1" /> }
+  { name: 'Match Data', path: '/match-data', icon: <TableIcon size={16} className="mr-1" /> },
+  { name: 'Matches', path: '/matches', icon: <Calendar size={16} className="mr-1" /> },
+  { name: 'Teams', path: '/teams', icon: <Shield size={16} className="mr-1" /> }
 ];
 
 const Navbar = () => {
