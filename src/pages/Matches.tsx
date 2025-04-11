@@ -8,7 +8,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import { Calendar, Search, ArrowUpDown, Calendar as CalendarIcon } from 'lucide-react';
 import { useMatchData } from '@/context/MatchDataContext';
-import { format } from 'date-fns';
 import { TEAMS } from '@/lib/teams';
 
 const Matches = () => {
@@ -60,9 +59,9 @@ const Matches = () => {
       <Navbar />
       <div className="container mx-auto py-8 px-4">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-[#0A1128] mb-2">Match Results</h1>
+          <h1 className="text-3xl font-bold text-[#0A1128] mb-2">Virtual Premier League Matches</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Browse all match results with detailed scorelines. Filter by team or search for specific matches.
+            Browse all match results from our virtual Premier League with detailed scorelines. Filter by team or search for specific matches.
           </p>
         </div>
 
@@ -132,7 +131,6 @@ const Matches = () => {
                     {currentMatches.map((match, index) => {
                       const homeWin = match.fullTimeHome > match.fullTimeAway;
                       const awayWin = match.fullTimeHome < match.fullTimeAway;
-                      const draw = match.fullTimeHome === match.fullTimeAway;
                       
                       const homeLogoUrl = getTeamLogo(match.homeTeam);
                       const awayLogoUrl = getTeamLogo(match.awayTeam);

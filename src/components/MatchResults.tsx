@@ -48,7 +48,7 @@ export const MatchResultsTable = () => {
       </CardHeader>
       <CardContent>
         <Table>
-          <TableCaption>Match results from the dataset</TableCaption>
+          <TableCaption>Match results from the virtual Premier League</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead>Date</TableHead>
@@ -110,7 +110,7 @@ export const LeagueTable = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>League Table</CardTitle>
+        <CardTitle>Virtual Premier League Table</CardTitle>
       </CardHeader>
       <CardContent>
         <Table>

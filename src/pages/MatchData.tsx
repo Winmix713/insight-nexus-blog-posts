@@ -35,9 +35,9 @@ const MatchData = () => {
       <Navbar />
       <div className="container mx-auto py-8 px-4">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-[#0A1128] mb-2">Football Match Data Analysis</h1>
+          <h1 className="text-3xl font-bold text-[#0A1128] mb-2">Virtual Premier League Analysis</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Comprehensive analysis of football match results including team performance, league standings, and match statistics based on real data.
+            Comprehensive analysis of our virtual Premier League match results including team performance, league standings, and match statistics based on historical data.
           </p>
         </div>
         
@@ -125,13 +125,13 @@ const MatchData = () => {
         <div className="bg-white rounded-lg shadow-md p-4">
           <div className="flex items-center gap-2 mb-3">
             <LineChart size={18} className="text-[#0A1128]" />
-            <h3 className="font-semibold">About Match Data Analysis</h3>
+            <h3 className="font-semibold">About Virtual Premier League</h3>
           </div>
           <p className="text-sm text-gray-700 mb-3">
-            This analysis is based on real football match data from the provided CSV files. The visualizations showcase team performance, league standings, and match statistics to provide comprehensive insights into the football league.
+            This analysis is based on virtual Premier League match data from our historical database. The visualizations showcase team performance, league standings, and match statistics to provide comprehensive insights into our virtual league.
           </p>
           <p className="text-sm text-gray-700">
-            The data includes half-time and full-time scores for each match, allowing for analysis of team performance throughout matches, scoring patterns, and league progression.
+            The data includes half-time and full-time scores for each match, allowing for analysis of team performance throughout matches, scoring patterns, and league progression, focusing entirely on results rather than individual player statistics.
           </p>
         </div>
       </div>
