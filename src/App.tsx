@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import PassingNetworks from "./pages/PassingNetworks";
 import ExpectedThreat from "./pages/ExpectedThreat";
 import TrackingData from "./pages/TrackingData";
+import AdvancedAnalytics from "./pages/AdvancedAnalytics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/passing-networks" element={<PassingNetworks />} />
           <Route path="/expected-threat" element={<ExpectedThreat />} />
           <Route path="/tracking-data" element={<TrackingData />} />
+          <Route path="/advanced-analytics" element={<AdvancedAnalytics />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

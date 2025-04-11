@@ -2,6 +2,7 @@
 import React from 'react';
 import ExpectedThreatViz from '@/components/ExpectedThreatViz';
 import Navbar from '@/components/Navbar';
+import { BarChart3 } from 'lucide-react';
 
 const ExpectedThreat = () => {
   return (
@@ -15,6 +16,12 @@ const ExpectedThreat = () => {
             xT measures the probability of scoring based on the location of possession and player actions.
           </p>
         </div>
+        
+        <div className="flex items-center gap-2 mb-6">
+          <BarChart3 size={20} className="text-[#0A1128]" />
+          <h2 className="text-xl font-semibold">Threat Analysis</h2>
+        </div>
+        
         <ExpectedThreatViz />
       </div>
     </div>

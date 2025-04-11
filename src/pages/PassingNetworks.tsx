@@ -2,6 +2,7 @@
 import React from 'react';
 import PassingNetworkViz from '@/components/PassingNetworkViz';
 import Navbar from '@/components/Navbar';
+import { TrendingUp } from 'lucide-react';
 
 const PassingNetworks = () => {
   return (
@@ -15,6 +16,12 @@ const PassingNetworks = () => {
             Understand team structures, key passing channels, and player importance in build-up play.
           </p>
         </div>
+        
+        <div className="flex items-center gap-2 mb-6">
+          <TrendingUp size={20} className="text-[#0A1128]" />
+          <h2 className="text-xl font-semibold">Network Analysis</h2>
+        </div>
+        
         <PassingNetworkViz />
       </div>
     </div>

@@ -2,6 +2,7 @@
 import React from 'react';
 import TrackingDataViz from '@/components/TrackingDataViz';
 import Navbar from '@/components/Navbar';
+import { Activity } from 'lucide-react';
 
 const TrackingData = () => {
   return (
@@ -15,6 +16,12 @@ const TrackingData = () => {
             Visualize positional play, defensive structures, and attacking patterns in real-time.
           </p>
         </div>
+        
+        <div className="flex items-center gap-2 mb-6">
+          <Activity size={20} className="text-[#0A1128]" />
+          <h2 className="text-xl font-semibold">Movement Analysis</h2>
+        </div>
+        
         <TrackingDataViz />
       </div>
     </div>
